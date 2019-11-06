@@ -34,8 +34,13 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 
+import javax.inject.Inject;
+
 public class ScreenMarkerOverlay extends Overlay
 {
+	@Inject
+	private ScreenMarkerPlugin plugin;
+
 	@Getter
 	private final ScreenMarker marker;
 	private final ScreenMarkerRenderable screenMarkerRenderable;
@@ -62,7 +67,7 @@ public class ScreenMarkerOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		if (!marker.isVisible())
+		if (!marker.isVisible() || !plugin.getGroupVisible(getMarker().getGroup()))
 		{
 			return null;
 		}

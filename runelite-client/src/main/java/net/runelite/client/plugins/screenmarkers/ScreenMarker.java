@@ -42,4 +42,5 @@ public class ScreenMarker
 	private Color fill;
 	private boolean visible;
 	private boolean labelled;
+	private String group;
 }
